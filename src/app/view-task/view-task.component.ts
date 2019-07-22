@@ -39,7 +39,10 @@ export class ViewTaskComponent implements OnInit {
   }
   endTask(task: Task): void{
     this.taskService.endTask(task)
-    .subscribe(tasks => this.tasks = tasks)
+    .subscribe(tasks => this.tasks = tasks);
+    window.location.reload();
+
+
   }
   editTask(task: Task): void{
     this.taskService.task = task;
