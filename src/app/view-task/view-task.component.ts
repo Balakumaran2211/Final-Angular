@@ -37,7 +37,10 @@ export class ViewTaskComponent implements OnInit {
     this.taskService.getAllTasks()
     .subscribe(tasks => this.tasks = tasks)
   }
-
+  endTask(task: Task): void{
+    this.taskService.endTask(task)
+    .subscribe(tasks => this.tasks = tasks)
+  }
   editTask(task: Task): void{
     this.taskService.task = task;
     this.taskService.editTaskFlag = true;
@@ -70,11 +73,11 @@ export class ViewTaskComponent implements OnInit {
   } 
 
   sortByCompleted(): void{
-     /*this.tasks.sort((a, b) => {
+     this.tasks.sort((a, b) => {
         if (a.status < b.status) return -1;
         else if (a.status > b.status) return 1;
         else return 0;
-      });*/
+      });
   }
 
 

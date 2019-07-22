@@ -56,6 +56,12 @@ export class TaskService {
     );
   }
 
+  endTask (task: Task): Observable<any> {
+    return this.http.put(this.taskUrl + "/end-task", task, httpOptions).pipe(
+      tap(_ => this.log(`updated task`)),
+      catchError(this.handleError<any>('updateUser'))
+    );
+  }
   getAllTasks(): Observable<Task[]>{
 	return this.http.get<Task[]>(this.rootUrl+"/task/all")
       .pipe(
